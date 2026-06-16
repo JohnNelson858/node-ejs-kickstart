@@ -25,8 +25,19 @@ app.get('/about',(req,res)=>{
     res.render('pages/about',{'title': title});
 });
 
+//electronics URL
+app.get('/electronics',(req,res)=>{
+    let title = "Electronics";
+    res.render('pages/electronics',{'title': title});
+});
+
+//web projects URL
+app.get('/web-projects',(req,res)=>{
+    let title = "Web Projects";
+    res.render('pages/web-projects',{'title': title});
+});
+
 //Set server to listen for requests
 app.listen(port, () => {
   console.log(`Server running at port: ${port}`);
 });
-
