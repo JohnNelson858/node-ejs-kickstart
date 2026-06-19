@@ -1,6 +1,14 @@
 //include Express
 const express = require('express');
 
+//load user data from the data folder
+const userData = require('./data/test.json');
+
+//temporary test to make sure data loads
+console.log("--- DATA LOAD TEST ---");
+console.log(userData[0]);
+console.log("----------------------");
+
 //server will listen on this port
 const port = 3000;
 
@@ -35,6 +43,18 @@ app.get('/electronics',(req,res)=>{
 app.get('/web-projects',(req,res)=>{
     let title = "Web Projects";
     res.render('pages/web-projects',{'title': title});
+});
+
+//users list URL
+app.get('/users',(req,res)=>{
+    let title = "User Directory";
+    res.render('users/index',{'title': title, 'users': userData});
+});
+
+//individual user view URL
+app.get('/users/view/:id',(req,res)=>{
+    let id = req.params.id;
+    res.render('users/view',{'title': 'User Profile', 'user': userData[--id]});
 });
 
 //Set server to listen for requests
